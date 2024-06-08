@@ -1,0 +1,334 @@
+body {
+    font-family: 'Roboto', sans-serif;
+    background-color: #f5f5f5;
+    margin: 0;
+    padding: 0;
+    color: #333;
+}
+
+.container {
+    width: 90%;
+    max-width: 1200px;
+    margin: 20px auto;
+    background-color: #fff;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    overflow: hidden;
+    padding: 20px;
+}
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 0;
+    border-bottom: 2px solid #eee;
+}
+
+.logo {
+    font-size: 24px;
+    font-weight: 700;
+    color: #4CAF50;
+}
+
+.language {
+    font-size: 16px;
+    padding: 5px 15px;
+    border: 2px solid #4CAF50;
+    border-radius: 20px;
+    color: #4CAF50;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.language:hover {
+    background-color: #4CAF50;
+    color: #fff;
+}
+
+.story-heading {
+    font-size: 32px;
+    text-align: center;
+    margin: 20px 0;
+    color: #333;
+    position: relative;
+}
+
+.story-heading:after {
+    content: "";
+    width: 50%;
+    height: 3px;
+    background-color: #4CAF50;
+    position: absolute;
+    bottom: -10px;
+    left: 25%;
+}
+
+pre {
+    background-color: #f9f9f9;  /* Light background color for better readability */
+    border: 1px solid #ccc;  /* Subtle border to distinguish from rest of content */
+    border-radius: 8px;  /* Rounded corners for a modern look */
+    padding: 15px;  /* Padding for space around the text */
+    font-family: 'Roboto', sans-serif;  /* Consistent font family */
+    font-size: 16px;  /* Comfortable font size */
+    color: #333;  /* Dark color for readability */
+    overflow-x: auto;  /* Horizontal scrolling for long lines */
+    white-space: pre-wrap;  /* Preserve white space and wrap long lines */
+    margin: 20px 0;  /* Space above and below the pre block */
+}
+
+@media (max-width: 768px) {
+    pre {
+        font-size: 14px;  /* Slightly smaller font size for mobile devices */
+        padding: 10px;  /* Less padding for smaller screens */
+    }
+}
+
+@media (max-width: 480px) {
+    pre {
+        font-size: 12px;  /* Even smaller font size for very small screens */
+        padding: 8px;  /* Less padding for very small screens */
+    }
+}
+
+.image {
+    height: 400px;  /* Adjust height as needed */
+    border: 2px solid #ccc;  /* Solid border to frame the viewer */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #f9f9f9;  /* Light background color */
+    border-radius: 8px;  /* Rounded corners */
+    overflow: hidden;  /* Ensures no overflow beyond the border */
+    margin: 20px 0;  /* Space above and below the element */
+}
+
+spline-viewer {
+    width: 100%;  /* Full width of the parent container */
+    height: 100%;  /* Full height of the parent container */
+    border-radius: 8px;  /* Rounded corners to match parent */
+}
+
+@media (max-width: 768px) {
+    .image {
+        height: 300px;  /* Adjust height for tablets */
+    }
+}
+
+@media (max-width: 480px) {
+    .image {
+        height: 250px;  /* Adjust height for mobile devices */
+    }
+}
+
+.question {
+    margin: 20px 0;
+    display: flex;
+    flex-direction: column;
+}
+
+.question label {
+    font-size: 18px;
+    margin-bottom: 5px;
+    font-weight: 500;
+}
+
+.question input {
+    padding: 10px;
+    font-size: 16px;
+    border: 2px solid #ccc;
+    border-radius: 5px;
+    transition: border 0.3s ease;
+}
+
+.question input:focus {
+    border: 2px solid #4CAF50;
+    outline: none;
+}
+
+.question button {
+    margin-top: 10px;
+    padding: 10px 20px;
+    width: 25%;
+    font-size: 16px;
+    color: #fff;
+    background-color: #4CAF50;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.question button:hover {
+    background-color: #45A049;
+}
+
+.ai-message {
+    display: none;
+    margin: 20px 0;
+    background-color: #e8f5e9;
+    padding: 20px;
+    border-left: 5px solid #4CAF50;
+    border-radius: 5px;
+    animation: fadeIn 1s ease-in-out;
+}
+
+.ai-message h2 {
+    font-size: 20px;
+    border-bottom: 2px solid #ccc;
+    padding-bottom: 5px;
+    margin-bottom: 10px;
+}
+
+.thought-graph {
+    height: 400px;  /* Initial height, adjust as needed */
+    border: 2px solid #ccc;  /* Solid border to frame the viewer */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #f9f9f9;  /* Light background color */
+    border-radius: 8px;  /* Rounded corners */
+    overflow: hidden;  /* Ensures no overflow beyond the border */
+    margin: 20px 0;  /* Space above and below the element */
+}
+
+spline-viewer {
+    width: 100%;  /* Full width of the parent container */
+    height: 100%;  /* Full height of the parent container */
+    border-radius: 8px;  /* Rounded corners to match parent */
+}
+
+@media (max-width: 768px) {
+    .thought-graph {
+        height: 300px;  /* Adjust height for tablets */
+    }
+}
+
+@media (max-width: 480px) {
+    .thought-graph {
+        height: 250px;  /* Adjust height for mobile devices */
+    }
+}
+
+
+.thought-graph {
+    border: 2px dashed #ccc;
+    padding: 20px;
+    margin: 20px 0;
+    text-align: center;
+    font-size: 18px;
+    background-color: #f9f9f9;
+    border-radius: 5px;
+}
+
+.feedback-section h2 {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.feedback-section form {
+    display: flex;
+    flex-direction: column;
+}
+
+.feedback-section label {
+    margin-bottom: 5px;
+}
+
+.feedback-section input, 
+.feedback-section textarea {
+    margin-bottom: 15px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    width: 90%;
+}
+
+.feedback-section button {
+    padding: 10px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    width: 25%;
+    transition: background-color 0.3s ease;
+}
+
+.feedback-section button:hover {
+    background-color: #0056b3;
+}
+
+#feedbackMessage {
+    margin-top: 20px;
+    text-align: center;
+    font-size: 16px;
+    color: green;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Responsive Design */
+@media (min-width: 768px) {
+    .content {
+        grid-template-columns: 2fr 1fr;
+    }
+}
+
+@media (max-width: 768px) {
+    .header, .content {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .language {
+        margin-top: 10px;
+    }
+
+    .feedback-section {
+        width: 100%;
+        margin: 20px auto;
+    }
+
+    .decision-graph, .reviews {
+        font-size: 16px;
+        padding: 15px;
+    }
+
+    .story-heading {
+        font-size: 24px;
+    }
+
+    .ai-message {
+        padding: 15px;
+        font-size: 14px;
+    }
+}
+
+@media (max-width: 480px) {
+    .story-heading {
+        font-size: 20px;
+    }
+
+    .question label, .question input, .question button {
+        font-size: 14px;
+    }
+
+    .ai-message h2 {
+        font-size: 18px;
+    }
+
+    .decision-graph, .reviews {
+        font-size: 14px;
+        padding: 10px;
+    }
+}
