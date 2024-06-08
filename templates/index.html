@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Story Page</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <div class="logo">Logo</div>
+            <div class="language">Language</div>
+        </header>
+        <main>
+            <div class="story-heading">Story Heading</div>
+            <div class="content">
+                <div class="text">
+                    <pre>
+It was a foggy evening in the small town of Maplewood. Jane, a young woman with a curious nature, had just returned home from a long day at work. She lived alone in an old house on Elm Street, inherited from her grandmother. The house had a charm, with its creaky wooden floors and large, dusty attic, but tonight it felt eerier than usual.
+
+As Jane was about to settle in for the night, she heard a soft knock on her door. Surprised, she hesitated for a moment before opening it. There was no one there, just the thick fog swirling around. She was about to close the door when she noticed a small, yellowed envelope on the doorstep. It had her name on it, written in an elegant, old-fashioned script.
+
+Curious, Jane picked up the envelope and closed the door behind her. She sat down at her kitchen table, under the dim light of a single bulb, and carefully opened the envelope. Inside was a letter, also written in the same beautiful handwriting. The letter read:
+
+"Dear Jane,
+
+I hope this letter finds you well. There is something important you need to know about your grandmother's house. Hidden within its walls is a secret that has been kept for generations. You must find it before it’s too late.
+
+Follow the clues left behind. The first one is where the light dances but never rests.
+
+Sincerely,
+A Friend"
+
+Jane's heart raced as she read the letter. Who could have sent this? What secret was hidden in her house? Her mind filled with questions, but her curiosity pushed her forward. She decided to follow the clue immediately.
+
+The first clue mentioned light that dances but never rests. Jane thought hard. "The fireplace!" she exclaimed. The flames in the fireplace danced continuously when lit. She hurried to the living room and examined the old stone fireplace. After a few minutes of searching, she found a loose brick. With some effort, she pulled it out and found a small, rusted key inside.
+
+She held the key tightly in her hand, wondering what it could open. The letter had said there were more clues. Jane knew she had to keep going, despite the fear creeping up her spine.
+                    </pre>
+
+                </div>
+                <div class="image">
+                    <script type="module" src="https://unpkg.com/@splinetool/viewer/build/spline-viewer.js"></script>
+                    <spline-viewer url="https://prod.spline.design/UWoeqiir20o49Dah/scene.splinecode"></spline-viewer>
+                </div>
+            </div>
+            <div class="question">
+                <label for="thought">Question:</label>
+                <input type="text" id="thought" name="thought" placeholder="Type your thought">
+                <button id="submit-btn">Submit</button>
+            </div>
+            <div class="ai-message" id="ai-message">
+                <h2>AI Message For Users Thought</h2>
+                <p id="ai-response"></p>
+            </div>
+            <pre>
+Determined to uncover the mystery, Jane went back to the letter, hoping for a hint about the next clue. As she re-read it, her eyes landed on the phrase "hidden within its walls." Could there be more hidden compartments in the house?
+
+She decided to start with the attic, a place she rarely visited. The attic was filled with old furniture, dusty books, and cobwebs. She felt a chill as she climbed the creaky stairs, the dim light of her flashlight barely cutting through the darkness.
+
+In the attic, Jane noticed an old, ornate mirror covered with a thick cloth. She pulled the cloth away and saw her reflection, looking back with a mixture of determination and fear. As she moved the mirror, she noticed it was heavier than it looked. Behind it was another loose panel in the wall.
+
+With trembling hands, she removed the panel to reveal a small, hidden compartment. Inside, there was a dusty old journal. She opened it carefully, and on the first page was a drawing of the very key she had found earlier. The journal belonged to her grandmother.
+
+The journal described a hidden room in the basement, a place where no one had been for decades. Her grandmother had written about a valuable family heirloom kept there for safekeeping. The key she had found was meant to open the door to this hidden room.
+
+Jane rushed to the basement, her heart pounding louder with each step. She found the door hidden behind a shelf filled with old tools and paint cans. With a deep breath, she inserted the key into the lock. The door creaked open, revealing a small room illuminated by a single, flickering bulb.
+
+In the center of the room was a chest. Jane approached it, her hands shaking. She opened the chest to find a collection of beautiful, antique jewelry, documents, and a letter addressed to her. The letter, written by her grandmother, explained the family's history and the importance of keeping the heirlooms safe.
+
+Jane felt a wave of relief and pride. She had uncovered a part of her family's past, a secret that had been hidden for generations. The mysterious letter had led her to something precious, something that connected her to her grandmother in a way she never thought possible.
+
+As she stood in the hidden room, Jane knew her life had changed forever. The mystery of the letter had brought her closer to her roots, and she felt a sense of peace knowing she had fulfilled her grandmother's wish.
+            </pre>
+
+            <div class="thought-graph">
+                <script type="module" src="https://unpkg.com/@splinetool/viewer/build/spline-viewer.js"></script>
+                <spline-viewer url="https://prod.spline.design/U9O6K7fXziMEU7Wu/scene.splinecode"></spline-viewer>
+            </div>
+        </main>
+        <div class="feedback-section">
+            <h2>Feedback</h2>
+            <form id="feedbackForm">
+                <label for="name">Name:</label>
+                <input type="text" id="name" name="name" required>
+    
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email" required>
+    
+                <label for="feedback">Feedback:</label>
+                <textarea id="feedback" name="feedback" required></textarea>
+    
+                <button type="submit">Submit</button>
+            </form>
+            <div id="feedbackMessage"></div>
+        </div>    
+    </div>
+
+    <script>
+        $(document).ready(function() {
+            $('#submit-btn').click(function() {
+                var userThought = $('#thought').val();
+                $.post('/submit', { thought: userThought }, function(data) {
+                    $('#ai-response').text(data.ai_message);
+                    $('#ai-message').fadeIn();
+                });
+            });
+        });
+        document.getElementById('feedbackForm').addEventListener('submit', function(event) {
+            event.preventDefault();
+            
+            var name = document.getElementById('name').value;
+            var email = document.getElementById('email').value;
+            var feedback = document.getElementById('feedback').value;
+
+            var message = "Thank you for your feedback, " + name + "!";
+            document.getElementById('feedbackMessage').innerText = message;
+
+            // Clear the form fields
+            document.getElementById('feedbackForm').reset();
+        });
+
+    </script>
+</body>
+</html>
