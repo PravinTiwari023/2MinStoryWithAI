@@ -31,7 +31,7 @@ body {
     color: #4CAF50;
 }
 
-.language {
+.language select {
     font-size: 16px;
     padding: 5px 15px;
     border: 2px solid #4CAF50;
@@ -39,11 +39,24 @@ body {
     color: #4CAF50;
     cursor: pointer;
     transition: all 0.3s ease;
+    background-color: #fff;
 }
 
-.language:hover {
+.language select:hover {
     background-color: #4CAF50;
     color: #fff;
+}
+
+/* Additional styles for responsiveness */
+@media (max-width: 768px) {
+    .header {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .language {
+        margin-top: 10px;
+    }
 }
 
 .story-heading {
