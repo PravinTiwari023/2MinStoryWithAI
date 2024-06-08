@@ -25,10 +25,10 @@ body {
     border-bottom: 2px solid #eee;
 }
 
-.logo {
-    font-size: 24px;
-    font-weight: 700;
-    color: #4CAF50;
+.logo img {
+    width: 200px; /* Adjust this value as needed */
+    height: auto;
+    max-width: 100%;
 }
 
 .language select {
