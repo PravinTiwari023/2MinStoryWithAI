@@ -29,7 +29,7 @@
             </div>
         </header>
         <main>
-            <div class="story-heading" id="story-heading">{{ mystery[0]['mystery_title'] }}</div>
+            <h1 class="story-heading" id="story-heading">{{ mystery[0]['mystery_title'] }}</h1>
             <div class="content">
                 <div class="image-set-1">
                     <div class="hover-container">
@@ -45,11 +45,21 @@
                 <div class="image">
                     <div class="story-heading" id="story-heading">Who Is Culprit?</div>
                     <div class="image-set-2">
-                        <img src="static/resource/2.png" alt="Image 1">
-                        <img src="static/resource/3.png" alt="Image 2">
-                        <img src="static/resource/4.png" alt="Image 2">
+                        <div class="image-text-container">
+                            <img src="static/resource/2.png" alt="Image 1">
+                            <p><b>I loved him a lot. I cannot forgive the </b></p>
+                        </div>
+                        <div class="image-text-container">
+                            <img src="static/resource/3.png" alt="Image 2">
+                            <p><b>I loved him a lot. I cannot forgive the </b></p>
+                        </div>
+                        <div class="image-text-container">
+                            <img src="static/resource/4.png" alt="Image 3">
+                            <p><b>I loved him a lot. I cannot forgive the </b></p>
+                        </div>
                     </div>
                 </div>
+                
             </div>
             <div class="question">
                 <label for="thought">Question:</label>
@@ -62,8 +72,27 @@
             </div>
             <!-- <pre id="remaining-story">{{ mystery[0]['mystery_solution_english'] }}</pre> -->
 
-            <div class="image-set-2">
-                under development --401--
+            <div class="voting-section">
+                <h2 class="story-heading" id="story-heading">Vote for the Culprit</h2>
+                <div class="voting-based-on-image">
+                    <div class="image-container">
+                        <img src="static/resource/2.png" alt="Image 1">
+                        <button class="vote-button" onclick="vote('Mark')">Vote for Mark</button>
+                    </div>
+                    <div class="image-container">
+                        <img src="static/resource/3.png" alt="Image 2">
+                        <button class="vote-button" onclick="vote('Emily')">Vote for Emily</button>
+                    </div>
+                    <div class="image-container">
+                        <img src="static/resource/4.png" alt="Image 3">
+                        <button class="vote-button" onclick="vote('Sarah')">Vote for Sarah</button>
+                    </div>
+                </div>
+                <div class="name-input-section">
+                    <input type="email" id="voter-email" placeholder="Enter your email">
+                    <button class="submit-button" onclick="submitVote()">Submit Vote</button>
+                </div>
+                <div id="message"></div>
             </div>
         </main>
         <div class="feedback-section">
@@ -131,6 +160,28 @@
             // Clear the form fields
             document.getElementById('feedbackForm').reset();
         });
+
+        let selectedVote = '';
+
+        function vote(voteValue) {
+            selectedVote = voteValue;
+            document.getElementById('message').textContent = `You selected ${voteValue}. Please enter your email and submit your vote.`;
+        }
+
+        function submitVote() {
+            const voterEmail = document.getElementById('voter-email').value;
+            if (selectedVote && voterEmail) {
+                // Send the vote data to the server
+                $.post('/vote', { vote: selectedVote, email: voterEmail }, function(data) {
+                    alert(`Vote submitted for ${selectedVote} by ${voterEmail}.`);
+                    document.getElementById('message').textContent = '';
+                    document.getElementById('voter-email').value = '';
+                    selectedVote = '';
+                });
+            } else {
+                alert('Please select a vote option and enter your email before submitting.');
+            }
+        }
     </script>
 </body>
 </html>
