@@ -170,6 +170,17 @@ pre {
     margin: 20px 0;
 }
 
+.image::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.3); /* Lighter dark overlay */
+    z-index: 1;
+}
+
 .story-heading {
     z-index: 2;
     font-size: 24px;
@@ -179,9 +190,18 @@ pre {
 }
 
 .image-set-2 {
+    display: flex;
     gap: 20px; /* Space between images */
     flex-wrap: wrap;
     justify-content: center; /* Center align for smaller screens */
+    z-index: 2;
+}
+
+.image-text-container {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 .image-set-2 img {
@@ -216,6 +236,24 @@ pre {
     opacity: 1;
 }
 
+.image-text-container p {
+    opacity: 0;
+    transition: opacity 0.3s ease-in-out, filter 0.3s ease-in-out;
+    position: absolute;
+    bottom: -30px;
+    width: 150px; /* Match image width */
+    text-align: center;
+    color: #fa00a7;
+    z-index: 3;
+    filter: blur(5px);
+}
+
+.image-text-container img:hover + p {
+    opacity: 1;
+    bottom: 5px; /* Adjust position when visible */
+    filter: blur(0px);
+}
+
 /* Additional animation for a smooth foggy effect */
 @keyframes fogAnimation {
     0% {
@@ -243,11 +281,14 @@ pre {
         width: 100px; /* Adjust the width for smaller screens */
     }
 
+    .image-text-container p {
+        width: 100px; /* Match smaller image width */
+    }
+
     .story-heading {
         font-size: 18px;
     }
 }
-
 
 /* Media queries for mobile responsiveness */
 @media (max-width: 768px) {
@@ -259,6 +300,10 @@ pre {
     .image-set-2 img {
         width: 100px; /* Reduce image size for smaller screens */
     }
+
+    .image-text-container p {
+        width: 100px; /* Match smaller image width */
+    }
 }
 
 @media (max-width: 480px) {
@@ -268,6 +313,10 @@ pre {
 
     .image-set-2 img {
         width: 80px; /* Further reduce image size for very small screens */
+    }
+
+    .image-text-container p {
+        width: 80px; /* Match very small image width */
     }
 }
 
@@ -438,4 +487,107 @@ pre {
     .ai-message h2 {
         font-size: 18px;
     }
+}
+
+/* Voting Section */
+.voting-section {
+    position: relative;
+    height: auto;
+    border: 2px solid #444;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-color: #2b2b2b;
+    border-radius: 8px;
+    overflow: hidden;
+    margin: 20px 0;
+    padding: 20px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.5); /* Soft shadow */
+}
+
+.voting-section h2 {
+    font-size: 24px;
+    color: #fff;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.voting-based-on-image {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    gap: 20px;
+    margin-bottom: 20px;
+}
+
+.image-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.image-container img {
+    max-width: 150px;
+    border: 2px solid #ddd;
+    border-radius: 10px;
+    margin-bottom: 10px;
+    transition: transform 0.3s ease-in-out, opacity 0.3s ease-in-out;
+    position: relative;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+}
+
+.image-container img:hover {
+    transform: scale(1.1); /* Slightly enlarge the image on hover */
+    opacity: 0.9; /* Slightly reduce opacity on hover */
+}
+
+.vote-button {
+    margin-top: 10px;
+    padding: 10px 20px;
+    font-size: 16px;
+    color: #fff;
+    background-color: #cc0000;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.vote-button:hover {
+    background-color: #b30000;
+}
+
+.name-input-section {
+    margin-bottom: 20px;
+}
+
+.name-input-section input {
+    padding: 10px;
+    border: 2px solid #ddd;
+    border-radius: 5px;
+    width: calc(100% - 24px);
+    margin-bottom: 10px;
+    background-color: #1a1a1a;
+    color: #f5f5f5;
+}
+
+.submit-button {
+    padding: 10px 20px;
+    font-size: 16px;
+    color: #fff;
+    background-color: #cc0000;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.submit-button:hover {
+    background-color: #b30000;
+}
+
+#message {
+    margin-top: 20px;
+    color: #f5f5f5;
 }
