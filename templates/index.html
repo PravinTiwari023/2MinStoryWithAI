@@ -31,18 +31,30 @@
         <main>
             <div class="story-heading" id="story-heading">{{ mystery[0]['mystery_title'] }}</div>
             <div class="content">
+                <div class="image-set-1">
+                    <div class="hover-container">
+                        <img src="static/resource/Church.png" alt="Image 1" class="hover-image church">
+                        <img src="static/resource/Bible.png" alt="Image 1.1" class="hover-image bible">
+                    </div>
+                    <img src="static/resource/Victim.png" alt="Image 2">
+                </div>
+                
                 <div class="text">
                     <pre id="story-content">{{ mystery[0]['mystery_english'] }}</pre>
                 </div>
                 <div class="image">
-                    <script type="module" src="https://unpkg.com/@splinetool/viewer@1.5.5/build/spline-viewer.js"></script>
-                    <spline-viewer url="https://prod.spline.design/Dui-9XgqjKxZG6hM/scene.splinecode"></spline-viewer>
+                    <div class="story-heading" id="story-heading">Who Is Culprit?</div>
+                    <div class="image-set-2">
+                        <img src="static/resource/2.png" alt="Image 1">
+                        <img src="static/resource/3.png" alt="Image 2">
+                        <img src="static/resource/4.png" alt="Image 2">
+                    </div>
                 </div>
             </div>
             <div class="question">
                 <label for="thought">Question:</label>
                 <input type="text" id="thought" name="thought" placeholder="Type your thought">
-                <button id="submit-btn">Submit</button>
+                <button id="submit-btn">under development --401--</button>
             </div>
             <div class="ai-message" id="ai-message">
                 <h2>AI Message For Users Thought</h2>
@@ -50,9 +62,8 @@
             </div>
             <!-- <pre id="remaining-story">{{ mystery[0]['mystery_solution_english'] }}</pre> -->
 
-            <div class="thought-graph">
-                <script type="module" src="https://unpkg.com/@splinetool/viewer@1.5.5/build/spline-viewer.js"></script>
-                <spline-viewer url="https://prod.spline.design/al6h3uz7Jjj-secs/scene.splinecode"></spline-viewer>
+            <div class="image-set-2">
+                under development --401--
             </div>
         </main>
         <div class="feedback-section">
@@ -67,7 +78,7 @@
                 <label for="feedback">Feedback:</label>
                 <textarea id="feedback" name="feedback" required></textarea>
     
-                <button type="submit">Submit</button>
+                <button type="submit">under development --401--</button>
             </form>
             <div id="feedbackMessage"></div>
         </div>    
