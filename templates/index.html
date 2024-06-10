@@ -64,12 +64,12 @@ I cannot forgive the killer.</pre>
                 </div>    
             </div>
             <div class="question">
-                <label for="thought">Question:</label>
+                <label for="thought">Ask our Mr. Detective who has been working on this case:</label>
                 <input type="text" id="thought" name="thought" placeholder="Type your thought">
-                <button id="submit-btn">under development --401--</button>
+                <button id="submit-btn">Discuss</button>
             </div>
             <div class="ai-message" id="ai-message">
-                <h2>AI Message For Users Thought</h2>
+                <h2>MR. Detective:</h2>
                 <p id="ai-response"></p>
             </div>
             <!-- <pre id="remaining-story">{{ mystery[0]['mystery_solution_english'] }}</pre> -->
@@ -79,23 +79,31 @@ I cannot forgive the killer.</pre>
                 <div class="voting-based-on-image">
                     <div class="image-container">
                         <img src="static/resource/2.png" alt="Image 1">
-                        <button class="vote-button" onclick="vote('Mark')">Vote for Mark</button>
+                        <p>Mark</p>
                     </div>
                     <div class="image-container">
                         <img src="static/resource/3.png" alt="Image 2">
-                        <button class="vote-button" onclick="vote('Emily')">Vote for Emily</button>
+                        <p>Emily</p>
                     </div>
                     <div class="image-container">
                         <img src="static/resource/4.png" alt="Image 3">
-                        <button class="vote-button" onclick="vote('Sarah')">Vote for Sarah</button>
+                        <p>Sarah</p>
                     </div>
+                </div>
+                <div class="vote-selection-section">
+                    <select id="vote-selection" class="vote-select">
+                        <option value="" disabled selected>Vote Suspect</option>
+                        <option value="Mark">Mark</option>
+                        <option value="Emily">Emily</option>
+                        <option value="Sarah">Sarah</option>
+                    </select>
                 </div>
                 <div class="name-input-section">
                     <input type="email" id="voter-email" placeholder="Enter your email">
                     <button class="submit-button" onclick="submitVote()">Submit Vote</button>
                 </div>
                 <div id="message"></div>
-            </div>
+            </div>                        
         </main>
         <div class="feedback-section">
             <h2>Feedback</h2>
@@ -165,25 +173,28 @@ I cannot forgive the killer.</pre>
 
         let selectedVote = '';
 
-        function vote(voteValue) {
-            selectedVote = voteValue;
-            document.getElementById('message').textContent = `You selected ${voteValue}. Please enter your email and submit your vote.`;
-        }
+    function vote(voteValue) {
+        selectedVote = voteValue;
+        document.getElementById('message').textContent = `You selected ${voteValue}. Please enter your email and submit your vote.`;
+    }
 
-        function submitVote() {
-            const voterEmail = document.getElementById('voter-email').value;
-            if (selectedVote && voterEmail) {
-                // Send the vote data to the server
-                $.post('/vote', { vote: selectedVote, email: voterEmail }, function(data) {
-                    alert(`Vote submitted for ${selectedVote} by ${voterEmail}.`);
-                    document.getElementById('message').textContent = '';
-                    document.getElementById('voter-email').value = '';
-                    selectedVote = '';
-                });
-            } else {
-                alert('Please select a vote option and enter your email before submitting.');
-            }
+    function submitVote() {
+        const voterEmail = document.getElementById('voter-email').value;
+        const voteValue = document.getElementById('vote-selection').value;
+        
+        if (voteValue && voterEmail) {
+            // Send the vote data to the server
+            $.post('/vote', { vote: voteValue, email: voterEmail }, function(data) {
+                alert(`Vote submitted for ${voteValue} by ${voterEmail}.`);
+                document.getElementById('message').textContent = '';
+                document.getElementById('voter-email').value = '';
+                document.getElementById('vote-selection').selectedIndex = 0;
+            });
+        } else {
+            alert('Please select a vote option and enter your email before submitting.');
         }
+    }
+
     </script>
 </body>
 </html>
