@@ -531,20 +531,47 @@ pre {
     opacity: 0.9; /* Slightly reduce opacity on hover */
 }
 
-.vote-button {
-    margin-top: 10px;
-    padding: 10px 20px;
-    font-size: 16px;
+.image-container p {
     color: #fff;
-    background-color: #ffa304;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
+    margin: 0;
 }
 
-.vote-button:hover {
-    background-color: #ff0000;
+/* Vote Selection Section */
+.vote-selection-section {
+    margin-bottom: 20px;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.vote-select {
+    padding: 12px;
+    border: 2px solid #555;
+    border-radius: 8px;
+    width: 100%;
+    max-width: 300px; /* Adjust the max-width as needed */
+    background-color: #333;
+    color: #f5f5f5;
+    font-size: 18px;
+    appearance: none; /* Remove default arrow */
+    -webkit-appearance: none; /* Remove default arrow for Safari */
+    -moz-appearance: none; /* Remove default arrow for Firefox */
+    background-image: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxMCIgaGVpZ2h0PSI2Ij4KICA8cGF0aCBkPSJNNSA2IDBMMy40IDBoMTEuMkw1IDZ6IiBmaWxsPSIjZmZmIi8+Cjwvc3ZnPgo='); /* Custom arrow icon */
+    background-repeat: no-repeat;
+    background-position: right 10px center;
+    background-size: 10px 6px;
+}
+
+.vote-select:focus {
+    border-color: #ffa304;
+    outline: none;
+    box-shadow: 0 0 5px rgba(255, 163, 4, 0.5);
+}
+
+/* Adjusting placeholder color */
+.vote-select option[value=""][disabled] {
+    color: #888;
 }
 
 .name-input-section {
@@ -579,4 +606,20 @@ pre {
 #message {
     margin-top: 20px;
     color: #f5f5f5;
+}
+
+/* Responsive styles for mobile devices */
+@media (max-width: 600px) {
+    .voting-based-on-image {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .image-container img {
+        max-width: 100px;
+    }
+
+    .vote-select, .name-input-section input {
+        width: calc(100% - 40px);
+    }
 }
