@@ -1,5 +1,7 @@
+import re
 from flask import Flask, render_template, request, jsonify
 from database import load_mystery_from_db
+from Gemini import generate_text
 
 app = Flask(__name__)
 
@@ -11,7 +13,7 @@ def index():
 @app.route('/submit', methods=['POST'])
 def submit():
     user_thought = request.form['thought']
-    ai_message = "AI Response: " + generate_ai_response(user_thought)  # Placeholder for AI response generation
+    ai_message = generate_text(user_thought)  # Placeholder for AI response generation
     return jsonify({'ai_message': ai_message})
 
 @app.route('/vote', methods=['POST'])
