@@ -1,1 +1,1 @@
-# 2MinStoryWithAI
+# Mystery With AI
