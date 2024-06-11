@@ -1,26 +1,78 @@
-from sqlalchemy import create_engine, text
+from sqlalchemy import create_engine, Column, String, Integer, text, func
+from sqlalchemy.orm import sessionmaker, declarative_base
+from sqlalchemy.exc import IntegrityError
 from dotenv import load_dotenv
 import os
 
 # Load environment variables from .env file
 load_dotenv()
 
-# Check if the environment variable is set and get its value
+# Retrieve the PostgreSQL connection string from the environment variables
 pgsql_data = os.getenv('DB_CONNECTION_STRING')
 
-# Create the SQLAlchemy engine
-engine = create_engine(pgsql_data)
+# Create the SQLAlchemy engine with the given connection string
+engine = create_engine(pgsql_data, echo=True)
 
+# Create a configured "Session" class
+Session = sessionmaker(bind=engine)
+
+# Declare a base class for models using the ORM
+Base = declarative_base()
+
+# Define the 'Suspect' model
+class Suspect(Base):
+    __tablename__ = 'suspect'
+    id = Column(Integer, primary_key=True)
+    vote_value = Column(String(255), nullable=False)
+    email = Column(String(255), unique=True, nullable=False)
+
+# Initialize the database and create tables
+def init_db():
+    Base.metadata.create_all(bind=engine)
+
+# Function to save a vote to the database
+def save_vote_to_db(vote_value, email):
+    session = Session()  # Create a new session
+    new_vote = Suspect(vote_value=vote_value, email=email)
+    session.add(new_vote)
+    try:
+        session.commit()  # Commit the transaction
+        print(f"Vote for {vote_value} by {email} recorded successfully.")
+    except IntegrityError as e:
+        session.rollback()  # Rollback in case of an error
+        print(f"Database error: {e}")
+        raise
+    except Exception as e:
+        session.rollback()  # Rollback in case of a general exception
+        print(f"An error occurred: {e}")
+        raise
+    finally:
+        session.close()  # Close the session
+        
+def collect_vote_counts():
+    session = Session()  # Create a new session
+    try:
+        # Query to count votes grouped by vote_value
+        results = session.query(Suspect.vote_value, func.count(Suspect.vote_value)).group_by(Suspect.vote_value).all()
+        
+        # Convert the results to a dictionary
+        vote_counts = {vote_value: count for vote_value, count in results}
+        return vote_counts
+    except Exception as e:
+        print(f"An error occurred while collecting vote counts: {e}")
+        raise
+    finally:
+        session.close()  # Close the session
+
+# Function to load mysteries from the database
 def load_mystery_from_db():
-    # Establish a connection to the database
     with engine.connect() as conn:
         print("Connection with database is successful")
 
         # Execute SQL query to fetch data from the 'mysteries' table
         result = conn.execute(text("SELECT * FROM mysteries"))
         
-        # Initialize an empty list to store the query results
-        result_dict = []
+        result_dict = []  # Initialize an empty list to store the query results
         
         # Iterate over each row in the query result
         for row in result.all():
