@@ -26,6 +26,14 @@ class Suspect(Base):
     vote_value = Column(String(255), nullable=False)
     email = Column(String(255), unique=True, nullable=False)
 
+# Define the 'Feedback' model
+class Feedback(Base):
+    __tablename__ = 'feedback'
+    id = Column(Integer, primary_key=True)
+    name = Column(String(255), nullable=False)
+    email = Column(String(255), nullable=False)
+    feedback = Column(String(1024), nullable=False)
+
 # Initialize the database and create tables
 def init_db():
     Base.metadata.create_all(bind=engine)
@@ -48,7 +56,23 @@ def save_vote_to_db(vote_value, email):
         raise
     finally:
         session.close()  # Close the session
-        
+
+# Function to save feedback to the database
+def save_feedback_to_db(name, email, feedback):
+    session = Session()  # Create a new session
+    new_feedback = Feedback(name=name, email=email, feedback=feedback)
+    session.add(new_feedback)
+    try:
+        session.commit()  # Commit the transaction
+        print(f"Feedback from {name} ({email}) recorded successfully.")
+    except Exception as e:
+        session.rollback()  # Rollback in case of a general exception
+        print(f"An error occurred: {e}")
+        raise
+    finally:
+        session.close()  # Close the session
+
+# Function to collect vote counts from the database
 def collect_vote_counts():
     session = Session()  # Create a new session
     try:
@@ -96,3 +120,7 @@ def load_mystery_from_db():
         
         # Return the list of dictionaries containing the fetched data
         return result_dict
+
+# Ensure the database connection string is loaded and secure
+if not pgsql_data:
+    raise ValueError("Database connection string is not set. Please set the DB_CONNECTION_STRING environment variable.")
