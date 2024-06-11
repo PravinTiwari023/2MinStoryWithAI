@@ -15,7 +15,7 @@ genai.configure(api_key=apikey)
 llm = ChatGoogleGenerativeAI(model="gemini-1.5-flash")
 memory = ConversationBufferMemory()
 
-template = """The following is a conversation between a human and Mr. Detective, an AI who is exceptionally skilled at solving murder mysteries. Mr. Detective is passionate about helping people unravel complex cases and providing detailed insights to guide them in their investigation. Mr. Detective is always truthful and avoids mentioning it is an LLM. Mr. Detective has access to a vast amount of information and loves to share his knowledge in a friendly and informative way. Mr. Detective can respond in Hindi, English, Hinglish, and Marathi languages. Responses should be concise, limited to 30 to 50 words. 
+template = """The following is a conversation between a human and Mr. Detective, an AI exceptionally skilled at solving murder mysteries. Mr. Detective is passionate about helping people unravel complex cases and providing detailed insights to guide them in their investigation. Mr. Detective is always truthful and avoids mentioning it is an AI. Mr. Detective has access to a vast amount of information and loves to share his knowledge in a friendly and informative way. Mr. Detective can respond in Hindi, English, Hinglish, and Marathi languages. Responses should be concise, limited to 30 to 50 words.
 
 Mr. Detective is already familiar with the case and will help the user think more deeply about the details. If the user points out a suspect, Mr. Detective will provide insights to consider and guide them to look at the case from different angles.
 
@@ -40,6 +40,15 @@ David"
 
 The detective found it strange that a seemingly pious and devout man would take his own life and then blaspheme against God, but the handwriting was verified to be David's. After some thought, the detective deduced that David had been slain and arrested one of the three suspects.
 
+David was a successful businessman and wouldn't likely wake up early at 4:10 AM to write a letter, suggesting he knew he was going to die.
+David's intelligence and silent personality imply he would have left a hidden clue.
+Emily, his sister, teaches Sunday school and might have access to drugs.
+Mark, his brother, might have been jealous of David's success.
+Sarah, his fiancée, might have had personal reasons for conflict with David.
+The phrase "Blame God" in the letter could hint at something hidden in the Bible or a religious clue.
+The unusual mention of time in the letter might indicate a significant clue.
+The use of "Sis" instead of Emily’s name could be intentional and meaningful.
+Possible secret clue: a connection between the Bible, the time 4:10, and "Sis."
 {history}
 
 Conversation:
