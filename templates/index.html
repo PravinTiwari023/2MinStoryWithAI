@@ -4,22 +4,27 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Mystery With AI</title>
+    
+    <!-- Favicon and CSS -->
     <link rel="icon" href="static/resource/icon_main.png" type="image/png">
     <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Kalam:wght@300;400;700&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+    
+    <!-- jQuery -->
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 </head>
 <body>
     <div class="container">
         <header class="header">
             <div class="logo">
+                <!-- Logo Image -->
                 <img src="{{ url_for('static', filename='resource/logo_main.png') }}" alt="2 Min Story AI Logo">
             </div>
             <div class="language">
+                <!-- Language Selection Dropdown -->
                 <select id="language-select">
                     <option value="english">English</option>
                     <option value="hinglish">Hinglish</option>
@@ -28,23 +33,30 @@
                 </select>
             </div>
         </header>
+
         <main>
+            <!-- Story Heading -->
             <h1 class="story-heading" id="story-heading">{{ mystery[0]['mystery_title'] }}</h1>
             <div class="content">
                 <div class="image-set-1">
+                    <!-- Hoverable Images -->
                     <div class="hover-container">
                         <img src="static/resource/Church.png" alt="Image 1" class="hover-image church">
                         <img src="static/resource/Bible.png" alt="Image 1.1" class="hover-image bible">
                     </div>
                     <img src="static/resource/Victim.png" alt="Image 2">
                 </div>
-                
+
+                <!-- Story Content -->
                 <div class="text">
                     <pre id="story-content">{{ mystery[0]['mystery_english'] }}</pre>
                 </div>
+
                 <div class="image">
+                    <!-- Question Section -->
                     <div class="story-heading" id="story-heading">Who Is Culprit?</div>
                     <div class="image-set-2">
+                        <!-- Suspect Images with Hover Text -->
                         <div class="image-container">
                             <img src="static/resource/2.png" alt="Image 1">
                             <pre class="hover-text">I am not the killer. 
@@ -61,8 +73,10 @@ I care about him.</pre>
 I cannot forgive the killer.</pre>
                         </div>
                     </div>
-                </div>    
+                </div>
             </div>
+
+            <!-- Question to AI Section -->
             <div class="question">
                 <label for="thought">Ask our Mr. Detective who has been working on this case:</label>
                 <input type="text" id="thought" name="thought" placeholder="Type your thought">
@@ -72,11 +86,12 @@ I cannot forgive the killer.</pre>
                 <h2>MR. Detective:</h2>
                 <p id="ai-response"></p>
             </div>
-            <!-- <pre id="remaining-story">{{ mystery[0]['mystery_solution_english'] }}</pre> -->
 
+            <!-- Voting Section -->
             <div class="voting-section">
                 <h2 class="story-heading" id="story-heading">Vote for the Culprit</h2>
                 <div class="voting-based-on-image">
+                    <!-- Voting Options with Counts -->
                     <div class="image-container">
                         <img src="static/resource/2.png" alt="Image 1">
                         <p>Mark: {{ vote_counts.get('Mark', 0) }}</p>
@@ -90,6 +105,8 @@ I cannot forgive the killer.</pre>
                         <p>Sarah: {{ vote_counts.get('Sarah', 0) }}</p>
                     </div>
                 </div>
+
+                <!-- Vote Selection -->
                 <div class="vote-selection-section">
                     <select id="vote-selection" class="vote-select">
                         <option value="" disabled selected>Vote Suspect</option>
@@ -98,33 +115,38 @@ I cannot forgive the killer.</pre>
                         <option value="Sarah">Sarah</option>
                     </select>
                 </div>
+
+                <!-- Email Input and Submit Button -->
                 <div class="name-input-section">
                     <input type="email" id="voter-email" placeholder="Enter your email">
                     <button class="submit-button" onclick="submitVote()">Submit Vote</button>
                 </div>
                 <div id="message"></div>
-            </div>                        
+            </div>
         </main>
+
+        <!-- Feedback Section -->
         <div class="feedback-section">
             <h2>Feedback</h2>
-            <form action="https://formbold.com/s/9k7jM" method="POST" id="feedbackForm">
+            <form id="feedbackForm" action="/feedback" method="POST">
                 <label for="name">Name:</label>
-                <input type="text" id="name" name="name" placeholder="Name" required>
+                <input type="text" id="name" name="name" required>
                 
                 <label for="email">Email:</label>
-                <input type="email" id="email" name="email" placeholder="Email" required>
+                <input type="email" id="email" name="email" required>
                 
                 <label for="feedback">Feedback:</label>
-                <textarea id="feedback" name="feedback" placeholder="Type your message" required></textarea>
+                <textarea id="feedback" name="feedback" required></textarea>
                 
-                <button type="submit">Send Message</button>
+                <button type="submit">Send Feedback</button>
             </form>
             <div id="feedbackMessage"></div>
-        </div>                   
+        </div>
     </div>
 
     <script>
         $(document).ready(function() {
+            // Submit thought to AI
             $('#submit-btn').click(function() {
                 var userThought = $('#thought').val();
                 $.post('/submit', { thought: userThought }, function(data) {
@@ -133,6 +155,7 @@ I cannot forgive the killer.</pre>
                 });
             });
 
+            // Language selection change
             $('#language-select').change(function() {
                 var selectedLanguage = $(this).val();
                 changeLanguage(selectedLanguage);
@@ -157,44 +180,56 @@ I cannot forgive the killer.</pre>
             }
         });
 
+        // Submit feedback form
         document.getElementById('feedbackForm').addEventListener('submit', function(event) {
             event.preventDefault();
-            
+
             var name = document.getElementById('name').value;
             var email = document.getElementById('email').value;
             var feedback = document.getElementById('feedback').value;
 
-            var message = "Thank you for your feedback, " + name + "!";
-            document.getElementById('feedbackMessage').innerText = message;
-
-            // Clear the form fields
-            document.getElementById('feedbackForm').reset();
+            fetch('/feedback', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({ name: name, email: email, feedback: feedback }),
+            })
+            .then(response => response.json())
+            .then(data => {
+                document.getElementById('feedbackMessage').innerText = data.message;
+                if (data.success) {
+                    document.getElementById('feedbackForm').reset();
+                }
+            })
+            .catch((error) => {
+                console.error('Error:', error);
+                document.getElementById('feedbackMessage').innerText = 'An error occurred while submitting your feedback.';
+            });
         });
 
         let selectedVote = '';
 
-    function vote(voteValue) {
-        selectedVote = voteValue;
-        document.getElementById('message').textContent = `You selected ${voteValue}. Please enter your email and submit your vote.`;
-    }
-
-    function submitVote() {
-        const voterEmail = document.getElementById('voter-email').value;
-        const voteValue = document.getElementById('vote-selection').value;
-        
-        if (voteValue && voterEmail) {
-            // Send the vote data to the server
-            $.post('/vote', { vote: voteValue, email: voterEmail }, function(data) {
-                alert(`Vote submitted for ${voteValue} by ${voterEmail}.`);
-                document.getElementById('message').textContent = '';
-                document.getElementById('voter-email').value = '';
-                document.getElementById('vote-selection').selectedIndex = 0;
-            });
-        } else {
-            alert('Please select a vote option and enter your email before submitting.');
+        function vote(voteValue) {
+            selectedVote = voteValue;
+            document.getElementById('message').textContent = `You selected ${voteValue}. Please enter your email and submit your vote.`;
         }
-    }
 
+        function submitVote() {
+            const voterEmail = document.getElementById('voter-email').value;
+            const voteValue = document.getElementById('vote-selection').value;
+
+            if (voteValue && voterEmail) {
+                $.post('/vote', { vote: voteValue, email: voterEmail }, function(data) {
+                    alert(`Vote submitted for ${voteValue} by ${voterEmail}.`);
+                    document.getElementById('message').textContent = '';
+                    document.getElementById('voter-email').value = '';
+                    document.getElementById('vote-selection').selectedIndex = 0;
+                });
+            } else {
+                alert('Please select a vote option and enter your email before submitting.');
+            }
+        }
     </script>
 </body>
 </html>
