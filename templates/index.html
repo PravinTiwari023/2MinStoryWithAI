@@ -79,15 +79,15 @@ I cannot forgive the killer.</pre>
                 <div class="voting-based-on-image">
                     <div class="image-container">
                         <img src="static/resource/2.png" alt="Image 1">
-                        <p>Mark</p>
+                        <p>Mark: {{ vote_counts.get('Mark', 0) }}</p>
                     </div>
                     <div class="image-container">
                         <img src="static/resource/3.png" alt="Image 2">
-                        <p>Emily</p>
+                        <p>Emily: {{ vote_counts.get('Emily', 0) }}</p>
                     </div>
                     <div class="image-container">
                         <img src="static/resource/4.png" alt="Image 3">
-                        <p>Sarah</p>
+                        <p>Sarah: {{ vote_counts.get('Sarah', 0) }}</p>
                     </div>
                 </div>
                 <div class="vote-selection-section">
