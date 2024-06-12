@@ -104,8 +104,4 @@ This project is licensed under the MIT License. See the [LICENSE](LICENSE) file 
 
 Watch the video demonstration of the Mystery With AI application:
 
-[![Mystery With AI Demo](https://img.youtube.com/vi/your-video-id/maxresdefault.jpg)](https://www.youtube.com/watch?v=your-video-id)
-
-Click the image above to watch the video.
-
-If you want to see a local video demonstration, you can download and play it from [here](media/test_video.mp4).
+[![Mystery With AI Demo](https://img.youtube.com/vi/your-video-id/maxresdefault.jpg)]([https://www.youtube.com/watch?v=your-video-id](https://youtu.be/dIzZUTKEiHw))
