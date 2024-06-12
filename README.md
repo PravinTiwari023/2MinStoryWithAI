@@ -32,7 +32,7 @@ Welcome to the Mystery With AI project! This is a web application where users ca
 
 1. **Clone the repository**:
     ```bash
-    git clone https://github.com/yourusername/mystery-with-ai.git
+    https://github.com/PravinTiwari023/MysteryWithAI.git
     cd MysteryWithAI
     ```
 
@@ -104,8 +104,6 @@ This project is licensed under the MIT License. See the [LICENSE](LICENSE) file 
 
 Watch the video demonstration of the Mystery With AI application:
 
-[![Mystery With AI Demo](https://img.youtube.com/vi/dIzZUTKEiHw/maxresdefault.jpg)](https://youtu.be/dIzZUTKEiHw?si=o5SLWu8oP2SzlxFq)
-
-<iframe width="560" height="315" src="https://www.youtube.com/embed/your-video-id" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+[![Mystery With AI Demo](https://img.youtube.com/vi/dIzZUTKEiHw/maxresdefault.jpg)](https://youtu.be/dIzZUTKEiHw)
 
 Click the image above to watch the video.
