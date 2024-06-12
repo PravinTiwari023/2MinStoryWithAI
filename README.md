@@ -11,9 +11,9 @@ Welcome to the Mystery With AI project! This is a web application where users ca
 - [Contributing](#contributing)
 - [License](#license)
 - [Acknowledgements](#acknowledgements)
+- [Video Demonstration](#video-demonstration)
 
 ## Features
-![Web Interface](/media/test_video.mp4 "Web Interface")
 
 - **Mystery Stories**: Read engaging mystery stories presented in a visually appealing format.
 - **Voting System**: Vote for the character you think is the culprit.
@@ -32,7 +32,7 @@ Welcome to the Mystery With AI project! This is a web application where users ca
 
 1. **Clone the repository**:
     ```bash
-    [git clone https://github.com/yourusername/mystery-with-ai.git](https://github.com/PravinTiwari023/MysteryWithAI.git)
+    git clone https://github.com/yourusername/mystery-with-ai.git
     cd MysteryWithAI
     ```
 
@@ -100,3 +100,12 @@ This project is licensed under the MIT License. See the [LICENSE](LICENSE) file 
 - Special thanks to the developers and contributors of the open-source libraries and frameworks used in this project.
 - Thanks to the users who provided feedback and helped improve the application.
 
+## Video Demonstration
+
+Watch the video demonstration of the Mystery With AI application:
+
+[![Mystery With AI Demo](https://img.youtube.com/vi/your-video-id/maxresdefault.jpg)](https://www.youtube.com/watch?v=your-video-id)
+
+Click the image above to watch the video.
+
+If you want to see a local video demonstration, you can download and play it from [here](media/test_video.mp4).
