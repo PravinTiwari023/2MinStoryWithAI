@@ -4,6 +4,7 @@ Welcome to the Mystery With AI project! This is a web application where users ca
 
 ## Table of Contents
 
+- [Video Demonstration](#video-demonstration)
 - [Features](#features)
 - [Setup and Installation](#setup-and-installation)
 - [Usage](#usage)
@@ -11,7 +12,14 @@ Welcome to the Mystery With AI project! This is a web application where users ca
 - [Contributing](#contributing)
 - [License](#license)
 - [Acknowledgements](#acknowledgements)
-- [Video Demonstration](#video-demonstration)
+
+## Video Demonstration
+
+Watch the video demonstration of the Mystery With AI application:
+
+[![Mystery With AI Demo](https://img.youtube.com/vi/dIzZUTKEiHw/maxresdefault.jpg)](https://youtu.be/dIzZUTKEiHw)
+
+Click the image above to watch the video.
 
 ## Features
 
@@ -99,11 +107,3 @@ This project is licensed under the MIT License. See the [LICENSE](LICENSE) file 
 
 - Special thanks to the developers and contributors of the open-source libraries and frameworks used in this project.
 - Thanks to the users who provided feedback and helped improve the application.
-
-## Video Demonstration
-
-Watch the video demonstration of the Mystery With AI application:
-
-[![Mystery With AI Demo](https://img.youtube.com/vi/dIzZUTKEiHw/maxresdefault.jpg)](https://youtu.be/dIzZUTKEiHw)
-
-Click the image above to watch the video.
