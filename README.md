@@ -104,4 +104,8 @@ This project is licensed under the MIT License. See the [LICENSE](LICENSE) file 
 
 Watch the video demonstration of the Mystery With AI application:
 
-[![Mystery With AI Demo](/static/resource/ThumbNeil.png)]([https://www.youtube.com/watch?v=your-video-id](https://youtu.be/dIzZUTKEiHw))
+[![Mystery With AI Demo](https://img.youtube.com/vi/dIzZUTKEiHw/maxresdefault.jpg)](https://youtu.be/dIzZUTKEiHw?si=o5SLWu8oP2SzlxFq)
+
+<iframe width="560" height="315" src="https://www.youtube.com/embed/your-video-id" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
+Click the image above to watch the video.
