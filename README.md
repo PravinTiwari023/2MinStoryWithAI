@@ -13,6 +13,7 @@ Welcome to the Mystery With AI project! This is a web application where users ca
 - [Acknowledgements](#acknowledgements)
 
 ## Features
+![Web Interface](test_video.mp4 "Web Interface")
 
 - **Mystery Stories**: Read engaging mystery stories presented in a visually appealing format.
 - **Voting System**: Vote for the character you think is the culprit.
