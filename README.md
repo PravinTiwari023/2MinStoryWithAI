@@ -86,8 +86,8 @@ Click the image above to watch the video.
 
 - **Frontend**: HTML, CSS, JavaScript, jQuery
 - **Backend**: Python, Flask
-- **AI Integration**: Placeholder for AI response generation logic
-- **Database**: Placeholder for database integration logic
+- **AI Integration**: Google GEMINI
+- **Database**: PostgreSQL
 
 ## Contributing
 
