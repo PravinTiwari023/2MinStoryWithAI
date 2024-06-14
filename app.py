@@ -2,6 +2,7 @@ from flask import Flask, render_template, request, jsonify
 from database import save_feedback_to_db, load_mystery_from_db, init_db, collect_vote_counts, save_vote_to_db
 from sqlalchemy.exc import IntegrityError
 from RagGemini import generate_content
+from Gemini import generate_text
 import re
 
 # Initialize the Flask application
@@ -21,7 +22,7 @@ def submit():
     # Retrieve the user's thought from the form
     user_thought = request.form['thought']
     # Generate the AI response based on the user's thought
-    ai_response = generate_content(user_thought)
+    ai_response = generate_text(user_thought)
     return jsonify({'ai_message': ai_response})
 
 # Route to handle voting
