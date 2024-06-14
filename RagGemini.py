@@ -22,6 +22,9 @@ google_api_key = os.getenv('GOOGLE_API_KEY')
 # Get Cassandra/AstraDB credentials
 astra_db_token = os.getenv('ASTRA_DB_APPLICATION_TOKEN')
 astra_db_id = os.getenv('ASTRA_DB_ID')
+# Get Langchain credentials
+os.environ['LANGCHAIN_TRACING_V2']="true"
+os.environ['LANGCHAIN_API_KEY']=os.getenv('LANGCHAIN_API_KEY')
 
 # Initialize Cassandra/AstraDB connection
 cassio.init(token=astra_db_token, database_id=astra_db_id)
@@ -81,4 +84,4 @@ def generate_content(query):
     return retrieval_chain.invoke({"input": query})['answer']
 
 # Test the function
-print(generate_content("tell me everything about Mark"))
+# print(generate_content("tell me everything about Mark"))
