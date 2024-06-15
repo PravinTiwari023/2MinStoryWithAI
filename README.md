@@ -21,6 +21,8 @@ Watch the video demonstration of the Mystery With AI application:
 
 Click the image above to watch the video.
 
+![Component](/MysteryWithAIArchetecture.png "Component")
+
 ## Features
 
 - **Mystery Stories**: Read engaging mystery stories presented in a visually appealing format.
